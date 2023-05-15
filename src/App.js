@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import {useEffect, useState } from 'react';
 
 
 // https://gateway.marvel.com:443/v1/public/characters?apikey=6e578bd8669d3b4d78b0db5e5b44e1f6
@@ -13,23 +14,19 @@ import React, { useEffect, useState } from 'react';
 // 128e175412cf48fc08442b9540feefa63f86da1486e578bd8669d3b4d78b0db5e5b44e1f6
 // hash: ebb925d085a862020285610c16aa3364
 
-
 function App() {
   const [personajes, setPersonajes] = useState([]);
 
-  async function fetchData() {
-    try {
-      const response = await fetch('/.netlify/functions/lambda');
-      const data = await response.json();
-      setPersonajes(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
-    fetchData();
+    axios
+      .get('https://ue4ciu2ts6pfl6xorxhyn7ke6e0pocnn.lambda-url.us-east-1.on.aws/')
+      .then((res) => {
+        setPersonajes(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
+
+  console.log(personajes);
 
   return (
     <div className="App">
@@ -39,10 +36,10 @@ function App() {
           <div className="col" key={per.id}>
             <div className="card" style={{ width: '18rem', height: '18rem' }}>
               <img
-                src={`${per.thumbnail.path}.${per.thumbnail.extension}`}
-                alt={per.name}
+                src={`${per.thumbnail}`}
                 className="card-img-top"
                 style={{ width: '80%', height: '80%' }}
+                alt="Character Thumbnail"
               />
               <div className="card-body">
                 <p className="card-text">{per.name}</p>
