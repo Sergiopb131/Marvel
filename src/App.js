@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-          <h1>MARVEL</h1>
+          <h1>PERSONAJES</h1>
           <div className="row row-cols-1 row-cols-md-3 g-4">
 
             { personajes.map( per=>(
