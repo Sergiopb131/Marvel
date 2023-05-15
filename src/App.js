@@ -18,9 +18,7 @@ function App() {
   const [personajes, setPersonajes] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://ue4ciu2ts6pfl6xorxhyn7ke6e0pocnn.lambda-url.us-east-1.on.aws/')
-      .then((res) => {
+    axios.get('https://ubycwr5j5wgg6ijrc2dg6qermm0wpkwl.lambda-url.us-east-1.on.aws/').then((res) => {
         setPersonajes(res.data);
       })
       .catch((error) => console.log(error));
