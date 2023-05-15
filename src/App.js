@@ -18,13 +18,15 @@ function App() {
 
   const [personajes, setPersonajes]=useState([])
 
-  useEffect(()=>{
- 
-      axios.get('https://tfpy3nrjyi7v6unlmrh6esqd4m0lljaa.lambda-url.us-east-1.on.aws/').then(res => {
-      setPersonajes(res.data.data.results);
-
-    }).catch(error=>console.log(error))
-  },[])
+  useEffect(() => {
+    axios.get('https://vxtce5sgoqfplkabwjjzlsewqi0amxvc.lambda-url.us-east-1.on.aws/')
+      .then((res) => {
+        setPersonajes(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   console.log(personajes)
 
