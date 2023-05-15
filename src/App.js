@@ -19,9 +19,10 @@ function App() {
   const [personajes, setPersonajes]=useState([])
 
   useEffect(()=>{
-    axios.get('https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=6e578bd8669d3b4d78b0db5e5b44e1f6&hash=ebb925d085a862020285610c16aa3364').then(res=>{
-      setPersonajes(res.data.data.results)
-     
+ 
+      axios.get('https://tfpy3nrjyi7v6unlmrh6esqd4m0lljaa.lambda-url.us-east-1.on.aws/').then(res => {
+      setPersonajes(res.data);
+
     }).catch(error=>console.log(error))
   },[])
 
