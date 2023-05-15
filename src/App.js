@@ -7,12 +7,14 @@ function App() {
   const [personajes, setPersonajes] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ubycwr5j5wgg6ijrc2dg6qermm0wpkwl.lambda-url.us-east-1.on.aws/').then((res) => {
-      setPersonajes(res.data);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, []);
+    axios.get('https://ubycwr5j5wgg6ijrc2dg6qermm0wpkwl.lambda-url.us-east-1.on.aws/').then(res=>{
+      setPersonajes(res.data.data.results)
+
+    }).catch(error=>console.log(error))
+  },[])
+
+  console.log(personajes)
+
 
   return (
     <div className="App">
