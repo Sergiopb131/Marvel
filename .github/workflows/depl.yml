@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: npm install
+      - run: npm install axios
       - run: CI='' npm run build
       - uses: jakejarvis/s3-sync-action@master
         with:
