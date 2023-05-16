@@ -7,7 +7,7 @@ function App() {
   const [personajes, setPersonajes] = useState([]);
 
   useEffect(() => {
-    axios.get('https://32uaaf6qzblpdghlye35xigglm0ouway.lambda-url.us-east-1.on.aws/').then(res => {
+    axios.get('https://ecgdrykjcqak7h6woo73pjjzaa0qdnid.lambda-url.us-east-1.on.aws/').then(res => {
       setPersonajes(res.data.data.results);
     }).catch(error => console.log(error));
   }, []);
