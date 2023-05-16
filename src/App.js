@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     axios.get('https://ecgdrykjcqak7h6woo73pjjzaa0qdnid.lambda-url.us-east-1.on.aws/').then(res => {
-      setPersonajes(res.data.data.results);
+      setPersonajes(res.data.body);
     }).catch(error => console.log(error));
   }, []);
 
