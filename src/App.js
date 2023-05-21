@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 function App() {
   const [personajes, setPersonajes] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ecgdrykjcqak7h6woo73pjjzaa0qdnid.lambda-url.us-east-1.on.aws/').then(res => {
+    axios.get('https://y3fuq7lqf4dxwdsz3cxqw3arla0vbqyl.lambda-url.us-east-1.on.aws/').then(res => {
       setPersonajes(res.data.body);
     }).catch(error => console.log(error));
   }, []);
@@ -21,7 +19,7 @@ function App() {
         {personajes.map(per => (
           <div className="col" key={per.id}>
             <div className="card" style={{ width: "18rem", height: "18rem" }}>
-              <img src={`${per.thumbnail.path}.${per.thumbnail.extension}`} className="card-img-top" style={{ width: "80%", height: "80%" }} />
+              <img src={`${per.thumbnail.path}.${per.thumbnail.extension}`} className="card-img-top" style={{ width: "80%", height: "80%" }} alt={per.name} />
               <div className="card-body">
                 <p className="card-text">{per.name}</p>
               </div>
