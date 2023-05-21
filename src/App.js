@@ -10,6 +10,7 @@ function App() {
     axios
       .get('https://y3fuq7lqf4dxwdsz3cxqw3arla0vbqyl.lambda-url.us-east-1.on.aws/')
       .then((res) => {
+        console.log(res.data);
         setPersonajes(res.data.body.data.results);
       })
       .catch((error) => console.log(error));
